@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+List of People
+{% endblock %}
+
+{% block content %}
+    
+    
+<br>
+<a class="btn btn-dark" href="{% url 'app_persons:insert' %}">Add</a>
+<a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+<br>   
+<br>
+<table class="table table-danger text-center table-bordered">
+       <thead>
+           <tr>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Email</th>
+               <th>Date Of Birth</th>
+               <th>Eliminar</th>
+               <th>Actualizar</th>
+           </tr>
+       </thead>
+        <tbody>
+            
+            {% for person in persons %}
+                
+                
+            <tr>
+                <td>{{person.first_name}}</td>
+                <td>{{person.last_name}}</td>
+                <td>{{person.email}}</td>
+                <td>{{person.date_of_birth}}</td>
+                <td><a href="{% url 'app_persons:delete' person.id %}" class="btn btn-danger">x</a></td>
+                <td><a href="{% url 'app_persons:edit' person.id %}" class="btn btn-warning">+</a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+{% endblock %}

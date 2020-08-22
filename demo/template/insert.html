@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Register Person
+{% endblock %}
+
+
+{% block content %}
+<br>
+<a class="btn btn-info" href="{% url 'home' %}">List Person</a>
+<a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4 shadow p-4">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success" type="submit">Save</button>
+        </form>
+        
+    </div>
+    <div class="col-4"></div>
+</div>
+
+{% endblock %}
